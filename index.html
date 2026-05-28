@@ -24,6 +24,10 @@
         document.body.style.textAlign = "left";
       }
 
+	  Object.defineProperty(window, 'devicePixelRatio', {
+		get: () => 1
+	  });
+		
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/WebGL.data.unityweb",
         frameworkUrl: "Build/WebGL.framework.js.unityweb",
@@ -34,7 +38,14 @@
         productVersion: "0.1",
         matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
+      })
+	  .then(() => {
+		const c = document.querySelector("#unity-canvas");
+		c.width = 720;
+		c.height = 1280;
+		c.style.width = "720px";
+		c.style.height = "1280px";
+	  });
     </script>
   </body>
 </html>
