@@ -41,10 +41,17 @@
       })
 	  .then(() => {
 		const c = document.querySelector("#unity-canvas");
-		c.width = 720;
-		c.height = 1280;
-		c.style.width = "720px";
-		c.style.height = "1280px";
+
+		function lock() {
+			c.width = 720;
+			c.height = 1280;
+			c.style.width = "720px";
+			c.style.height = "1280px";
+		}
+
+		lock();
+		setTimeout(lock, 0);
+		setTimeout(lock, 100);
 	  });
     </script>
   </body>
